@@ -1,5 +1,7 @@
-# Site
-repository: ahsankhan75/ahsankhan75-github-resume-portfolio
+# Site (repository must match the GitHub repo that hosts Pages — use ahsankhan75.github.io for user site)
+repository: ahsankhan75/ahsankhan75.github.io
+url: https://ahsankhan75.github.io
+baseurl: ""
 favicon: images/favicon.ico
 
 # Content configuration version
