@@ -1,0 +1,120 @@
+# Site
+repository: ahsankhan75/ahsankhan75-github-resume-portfolio
+favicon: images/favicon.ico
+
+# Content configuration version
+version: 2
+
+# Personal info
+name: Muhammad Ahsan Khan Lodhi
+title: BSc Computer Science · AI & Full-Stack Development
+email: ahsankhan7503@gmail.com
+phone: "0331-5119970"
+website: https://github.com/ahsankhan75
+
+# Dark Mode (true/false/never)
+darkmode: false
+
+# Social links
+github_username: ahsankhan75
+linkedin_username: muhammad-ahsan-khan-lodhi-142232277
+# twitter_username:
+# instagram_username:
+# youtube_username:
+
+# Additional icon links
+# additional_links:
+# - title: Link name
+#   icon: fas fa-globe
+#   url: https://example.com
+
+# Google Analytics and Tag Manager
+# gtm: "GTM-0000000"
+# gtag: "UA-00000000-0"
+# google_analytics: "UA-00000000-0"
+
+# About Section
+about_title: About
+about_profile_image: images/profile.jpg
+about_content: |
+  Computer Science undergraduate at **Lahore University of Management Sciences (LUMS)** with hands-on experience building **Django** web apps, **RAG** and **LangChain** systems, and **MERN** stack applications. Based in **Islamabad, Pakistan**.
+
+  **Location:** House 31 Street 56, F-6/4, Islamabad, Pakistan
+
+content:
+  - title: Education
+    layout: list
+    content:
+      - layout: left
+        title: Lahore University of Management Sciences (LUMS)
+        caption: September 2022 – May 2026
+        sub_title: Bachelor of Science in Computer Science
+        description: |
+          Lahore, Pakistan
+
+  - title: Experience
+    layout: list
+    content:
+      - layout: left
+        title: Veyn.AI
+        sub_title: AI Intern
+        caption: July 2025 – August 2025
+        description: |
+          Islamabad, Pakistan
+
+          - Engineered an HR-oriented **Retrieval-Augmented Generation (RAG)** chatbot with **LangChain** for text and image policy documents, with embeddings in a **FAISS** index used as a vector store for efficient querying.
+          - Built an admin portal in **Streamlit** for corpus management (add/delete) and configurable **system prompts** and **LLM model selection**.
+          - Architected the employee-facing app with a **MERN** frontend and **FastAPI** backend for real-time, context-aware responses.
+          - Implemented a **LangChain agent** that queried internal APIs for employee-specific data (e.g. leave balances, roles).
+          - Combined **API** data with the **RAG pipeline** so the agent could answer personalized questions (e.g. vacation days remaining).
+          - Researched **knowledge graphs** in RAG; prototyped **Graph RAG** with **Neo4j** for Yes/No policy questions (**~93%** accuracy, **~2.84 s** average response time).
+
+      - layout: left
+        title: Nayatel
+        sub_title: Enterprise Solutions Intern
+        caption: August 2024 – September 2024
+        description: |
+          Islamabad, Pakistan
+
+          - Developed a compact **Django** employee portal (pilot project).
+          - Implemented role-based access for employees and admins using **sessions**.
+          - Integrated a module into Nayatel’s in-house **CRM** so developers could route SQL queries to database administrators, **reducing query resolution time by about 60%**.
+
+  - title: Projects
+    layout: list
+    content:
+      - layout: top-middle
+        title: "IQueue: Smart Scheduling"
+        link: https://iqueue-zeta.vercel.app
+        link_text: Live site
+        quote: >
+          JavaScript · MongoDB · React · Express
+        description: |
+          **IQueue** helps customers **manage service appointments** and simplifies how they access services.
+
+          - **Vendor dashboard** for businesses to serve **online and walk-in** customers and manage **appointments, services, staff, and workflows**.
+          - **Role-specific staff UI** so staff see only **their** services and appointments, reducing clutter and improving focus.
+          - **Full-stack deployment:** frontend on **Vercel**, backend on **Render** for high availability.
+
+  - title: Technical Skills
+    layout: text
+    content: |
+      **Languages:** Python, C++, C#, C, HTML/CSS, JavaScript, SQL, Swift
+
+      **Developer tools:** VS Code, Xcode, GitHub, Jira, Vercel
+
+      **Technologies & frameworks:** Django, MERN, .NET, Microsoft SQL Server, OpenCV, PyTorch, TensorFlow, LangChain, LangGraph, Tailwind
+
+# Footer
+footer_show_references: true
+# references_title: References on request
+
+# Build settings
+remote_theme: sproogen/resume-theme
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+plugins:
+ - jekyll-seo-tag

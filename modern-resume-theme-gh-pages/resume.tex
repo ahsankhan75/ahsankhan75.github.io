@@ -1,0 +1,218 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    {\Huge \scshape Muhammad Ahsan Khan Lodhi} \\ \vspace{1pt}
+    House 31 Street 56, F-6/4, Islamabad, Pakistan \\ \vspace{1pt}
+    \small \raisebox{-0.1\height}\faPhone\ 0331-5119970 ~ \href{mailto:x@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{ahsankhan7503@gmail.com}} ~ 
+    \href{https://linkedin.com/in/muhammad-ahsan-khan-lodhi-142232277/}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/muhammad-ahsan-khan-lodhi-142232277}}  ~
+    \\
+    \href{https://github.com/ahsankhan75}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/ahsankhan75}}
+    \vspace{-8pt}
+\end{center}
+
+\vspace{10pt}
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Lahore University of Management Sciences}{September 2022 -- May 2026}
+      {Bachelor of Science in Computer Science}{Lahore, Pakistan}
+  \resumeSubHeadingListEnd
+
+
+
+\vspace{5pt}
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Nayatel}{August 2024 -- September 2024}
+      {Enterprise Solutions Intern}{Islamabad, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Developed a compact version of Nayatel's employee portal using the \textbf{Django} framework, in a project piloted by myself.}
+        \resumeItem{Developed a mechanism enabling employees and admin users to access different functionalities within the portal using \textbf{Sessions}.}
+        \resumeItem{Collaborated on integrating a module within Nayatel's in-house \textbf{Content Resource Management (CRM) Software}, streamlining the process of each developer sending their SQL based database queries to the database administrators \textbf{improving query resolution time by 60\%}.}
+      \resumeItemListEnd
+    
+  \resumeSubHeadingListEnd
+\vspace{5pt}
+
+\resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Veyn.AI}{July 2025 -- August 2025}
+      {AI Intern}{Islamabad, Pakistan}
+      \resumeItemListStart
+        \resumeItem{Engineered a comprehensive, HR-oriented \textbf{Retrieval-Augmented Generation (RAG) Chatbot} using \textbf{Langchain} to process both text and image-based policy documents, storing embeddings in a \textbf{FAISS Index File} which was used \textbf{as a Vector Database} for efficient querying.}
+        \resumeItem{Developed a dedicated admin portal using \textbf{Streamlit}, empowering HR personnel to manage the document corpus (add/delete) and customize the chatbot's behavior through configurable \textbf{System Prompts} and \textbf{LLM Model Selection}.}
+        \resumeItem{Architected the employee-facing chat application using a \textbf{MERN} stack, which communicated with a high-performance \textbf{FastAPI} backend to deliver real-time, context-aware responses.}
+        \resumeItem{Implemented an advanced \textbf{Langchain Agent} capable of querying the company's internal database via a secure API to fetch employee-specific data, such as leave balances and job roles.}
+        \resumeItem{Designed the agent to obtain data from the \textbf{API} with information from the \textbf{RAG pipeline}, enabling it to answer complex, personalized queries like "How many vacation days do I have left?" by performing necessary calculations.}
+        \resumeItem{Conducted research into the efficacy of \textbf{Knowledge Graphs} in RAG systems, concluding that their \textbf{Entity-Centric Structure} offers superior precision over vector similarity for objective, fact-based queries.}
+        \resumeItem{Developed a proof-of-concept \textbf{Graph RAG} prototype using a \textbf{Neo4j} graph database, where an LLM dynamically generated graph queries to retrieve information to \textbf{answer Yes/No policy related questions} with a \textbf{High Accuracy of 93\%} and \textbf{Average Response Time of 2.84 Seconds}.}
+      \resumeItemListEnd
+    
+  \resumeSubHeadingListEnd
+\vspace{5pt}
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+      % \resumeProjectHeading
+      %     {\textbf{Urdu News Category Classifier} $|$ \emph{Python, Selenium, BeautifulSoup, TensorFlow}}{December 2024}
+      %     \resumeItemListStart
+      %       \resumeItem{Developed a web scraper that scraped Urdu based news articles from Samaa, Dawn, ARY, Express, and the Geo news websites. Within the project, \textbf{BeautifulSoup} was used for websites with \textbf{static pages} while \textbf{Selenium} was used for \textbf{websites with dynamic scrolling}.}
+      %       \resumeItem{Scraped Urdu news articles across the categories of Entertainment, Sports, Business, Science-Technology, and International for the purpose of \textbf{Classification}.}
+      %       \resumeItem{\textbf{Trained a Recurrent Neural Network (RNN)} using TensorFlow which produced an \textbf{Accuracy of 88\%} for Urdu News Category Classification.}
+      %     \resumeItemListEnd
+      %     \vspace{-13pt}
+      % \resumeProjectHeading
+      %     {\textbf{Augmented Reality IOS App} $|$ \emph{Python, Swift, XCode, OpenCV}}{November 2024}
+      %     \resumeItemListStart
+      %       \resumeItem{Created an iOS application using Swift and XCode to \textbf{display the Augmented Reality Model obtained via 3D Reconstruction of the Pantheon Gate}.}
+      %       \resumeItem{Processed a large dataset of 2D images of the Pantheon gate using OpenCV and Open3D to \textbf{generate a 3D mesh of the Pantheon Gate's structure}.}
+      %       \resumeItem{Integrated user interaction features, allowing users to \textbf{rotate, scale, and place the 3D model} within the AR environment.}
+      %     \resumeItemListEnd 
+      %     \vspace{-13pt}
+          \resumeProjectHeading
+          {\textbf{IQueue: Smart Scheduling} $|$ \href{https://iqueue-zeta.vercel.app}{\underline{IQueue Link}} $|$ \emph{JavaScript, MongoDB, ReactJS, ExpressJS}}{January 2026}
+          \resumeItemListStart
+          \resumeItem{Developed a comprehensive platform, \textbf{IQueue}, that enables customers to \textbf{manage their Service Appointments} which streamlines the process of obtaining these services for customers.}
+          \resumeItem{Designed and integrated a \textbf{User-Friendly Management Interface} for a \textbf{Business Vendor}, where they can cater to both \textbf{Online Appointment and Walk In Customers} enabling efficient control of \textbf{Appointments, Services, Staff Members, and Operational Workflows}.}
+          \resumeItem{Designed a \textbf{Role-Specific Staff Interface} allowing staff members to \textbf{Manage only Their Assigned Services and Appointments}, \textbf{Reducing Interface Clutter} and improving focus on task execution.}
+          \resumeItem{Deployed a \textbf{Full-Stack Web Application} with Frontend hosted on \textbf{Vercel} and Backend Services powered by \textbf{Render}, ensuring \textbf{High Availability} across platforms.}
+          \resumeItemListEnd 
+    \resumeSubHeadingListEnd
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, C++, C\#, C, HTML/CSS, JavaScript, SQL, Swift} \\
+     \textbf{Developer Tools}{: VS Code, XCode, GitHub, Jira, Vercel} \\
+     \textbf{Technologies/Frameworks}{: Django, MERN, DotNet, Microsoft SQL Server, OpenCV, PyTorch, TensorFlow, LangChain, LangGraph, Tailwind} \\
+    }}
+ \end{itemize}
+ \vspace{-16pt}
+
+
+\end{document}
