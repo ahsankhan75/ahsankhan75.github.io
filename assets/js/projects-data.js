@@ -57,6 +57,52 @@ var PORTFOLIO_PROJECTS = [
     ]
   },
   {
+    id: 'emcon',
+    category: 'software-dev',
+    title: 'EMCON: Emergency Medical Connections',
+    url: 'https://emcon-lums-2025.vercel.app',
+    linkLabel: 'View Live Demo',
+    tags: ['React', 'Express', 'MongoDB', 'Python', 'scikit-learn', 'Vercel', 'Render', 'Railway'],
+    summary: 'EMCON is a full-stack healthcare navigation platform built for CS 360 at LUMS. It helps users find hospitals with rich filters and geolocation, view AI-predicted wait times, track blood donation requests, create digital medical cards, and leave hospital reviews — all through a production-deployed MERN application with a separate Python ML service keeping wait-time estimates fresh in MongoDB.',
+    impact: 'EMCON addresses a real coordination gap in emergency healthcare: patients need to know which nearby hospital has capacity, acceptable wait times, and the right facilities before they leave home. By combining searchable hospital data, community blood-request tracking, portable medical cards, and live wait-time predictions driven by ICU and ventilator availability, the platform shows how academic full-stack work can map to a deployable public-health tool.',
+    learned: 'Building EMCON taught me to design around multiple user journeys — anonymous hospital search, authenticated blood donors, and admin hospital management — while keeping one MongoDB schema coherent. Deploying frontend, API, and a background ML worker across Vercel, Render, and Railway forced me to think in services that share state through the database rather than a monolith.',
+    parts: [
+      {
+        title: 'Hospital Discovery & Navigation',
+        summary: 'Searchable hospital directory with geolocation, facility filters, ratings, and live wait-time display.',
+        highlights: [
+          '<strong>Advanced hospital filtering</strong> by name, minimum rating, blood bank availability, and medical imaging options (MRI, CT, X-Ray, Ultrasound) via a RESTful filter API.',
+          '<strong>Geolocation-based search</strong> using browser geolocation to find hospitals within a configurable radius, surfacing distance-aware results for time-sensitive decisions.',
+          '<strong>Rich hospital profiles</strong> showing ICU beds, ventilators, specializations, insurance acceptance, community ratings, and color-coded general and emergency wait times on each listing.'
+        ],
+        impact: 'These flows turn scattered hospital information into something a patient or caregiver can act on in minutes — filter by imaging needs, see predicted waits, and read peer reviews before choosing where to go.',
+        learned: 'I learned to model hospital resources as structured documents the filter API can query, and to handle geolocation permission failures gracefully. Displaying wait times with traffic-light coloring made me think about how data freshness and UX trust interact when predictions update in the background.'
+      },
+      {
+        title: 'Blood Requests, Reviews & Medical Cards',
+        summary: 'Community blood donation tracking, authenticated reviews, and portable digital medical records.',
+        highlights: [
+          '<strong>Blood donation request board</strong> where users can post, browse, accept, and manage blood requests — connecting donors with hospitals and patients who need specific blood types.',
+          '<strong>Hospital review system</strong> with star ratings tied to individual hospitals, giving future visitors community-sourced quality signals alongside objective facility data.',
+          '<strong>Digital medical card</strong> allowing authenticated users to create and retrieve a personal medical card stored securely on the backend for quick access during emergencies.'
+        ],
+        impact: 'Blood request tracking and digital medical cards address two friction points in real emergencies: finding compatible donors quickly and having critical health information on hand when a patient cannot speak for themselves.',
+        learned: 'I gained experience wiring JWT-protected routes for user-specific resources like medical cards and personal blood requests, while keeping hospital search public. Designing review flows taught me to aggregate ratings back onto hospital documents so list views stay fast without N+1 queries.'
+      },
+      {
+        title: 'Cloud Deployment & AI Wait Time Predictions',
+        summary: 'Multi-service production architecture with a Python ML worker updating hospital wait times in MongoDB.',
+        highlights: [
+          '<strong>Full-stack cloud deployment</strong> with the React frontend on Vercel, the Express/MongoDB API on Render, and high availability across managed hosting platforms.',
+          '<strong>AI wait time predictor</strong> — a Python service deployed on Railway that trains separate linear regression models for general and emergency departments using ICU bed and ventilator counts as features.',
+          '<strong>Live database sync loop</strong> where the predictor reads every hospital from MongoDB, computes predicted wait times, and writes updated <code>wait_times.general</code> and <code>wait_times.emergency</code> fields on a continuous cycle so the EMCON interface always reflects current estimates.'
+        ],
+        impact: 'Splitting the ML worker from the web app mirrors how production systems keep inference off the request path — the frontend simply reads wait times the predictor maintains, so hospital listings stay responsive even as predictions refresh every few seconds.',
+        learned: 'Deploying a background Python process alongside a Node API taught me service boundaries: shared MongoDB as the integration point, environment-driven connection strings, and why decoupled inference beats blocking API calls during peak usage. Building the linear regression models reinforced how even simple ML can power useful UX when fed meaningful resource features.'
+      }
+    ]
+  },
+  {
     id: 'ecommerce',
     category: 'software-dev',
     title: 'E-Commerce Platform — SQL Server & .NET',
