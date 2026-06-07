@@ -61,7 +61,7 @@ var PORTFOLIO_PROJECTS = [
     category: 'software-dev',
     title: 'EMCON: Emergency Medical Connections',
     url: 'https://emcon-lums-2025.vercel.app',
-    linkLabel: 'View Live Demo',
+    linkLabel: 'Live Demo',
     tags: ['React', 'Express', 'MongoDB', 'Python', 'scikit-learn', 'Vercel', 'Render', 'Railway'],
     summary: 'EMCON is a full-stack healthcare navigation platform built for CS 360 at LUMS. It helps users find hospitals with rich filters and geolocation, view AI-predicted wait times, track blood donation requests, create digital medical cards, and leave hospital reviews — all through a production-deployed MERN application with a separate Python ML service keeping wait-time estimates fresh in MongoDB.',
     impact: 'EMCON addresses a real coordination gap in emergency healthcare: patients need to know which nearby hospital has capacity, acceptable wait times, and the right facilities before they leave home. By combining searchable hospital data, community blood-request tracking, portable medical cards, and live wait-time predictions driven by ICU and ventilator availability, the platform shows how academic full-stack work can map to a deployable public-health tool.',
