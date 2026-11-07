@@ -105,6 +105,11 @@
       </div>`;
 
     detailEl.scrollTop = 0;
+
+    // Cross-fade new content in; restarting the class keeps it interruptible
+    detailEl.classList.remove('is-switching');
+    void detailEl.offsetWidth;
+    detailEl.classList.add('is-switching');
   }
 
   function renderCategories() {
