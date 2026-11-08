@@ -6,6 +6,8 @@
   const listEl = document.getElementById('projects-list');
   const detailEl = document.getElementById('project-detail');
   const overviewEl = document.getElementById('projects-overview');
+  const countEl = document.getElementById('projects-count');
+  const isCompact = () => window.matchMedia('(max-width: 900px)').matches;
 
   let activeCategory = PORTFOLIO_CATEGORIES[0].id;
   let activeProjectId = null;
@@ -102,7 +104,20 @@
       <div class="project-detail__parts">
         <h4 class="project-detail__parts-title">Project breakdown</h4>
         ${project.parts.map((part, i) => renderPart(part, i)).join('')}
-      </div>`;
+      </div>
+      ${renderPager(project)}`;
+
+    detailEl.querySelectorAll('[data-goto]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = findProject(btn.dataset.goto);
+        if (!target) return;
+        activeCategory = target.category;
+        activeProjectId = target.id;
+        renderAll();
+        updateHash();
+        scrollToDetail();
+      });
+    });
 
     detailEl.scrollTop = 0;
 
@@ -110,6 +125,80 @@
     detailEl.classList.remove('is-switching');
     void detailEl.offsetWidth;
     detailEl.classList.add('is-switching');
+  }
+
+  function renderPager(project) {
+    const idx = PORTFOLIO_PROJECTS.indexOf(project);
+    const prev = PORTFOLIO_PROJECTS[idx - 1];
+    const next = PORTFOLIO_PROJECTS[idx + 1];
+    const btn = (p, dir) =>
+      p
+        ? `<button type="button" class="project-pager__btn project-pager__btn--${dir}" data-goto="${p.id}">
+             <span class="project-pager__dir">${dir === 'prev' ? '← Previous' : 'Next project →'}</span>
+             <span class="project-pager__title">${escapeHtml(p.title)}</span>
+           </button>`
+        : '<span></span>';
+    return `<nav class="project-pager" aria-label="Previous and next project">${btn(prev, 'prev')}${btn(next, 'next')}</nav>`;
+  }
+
+  function scrollToDetail() {
+    if (isCompact()) {
+      detailEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      workspace.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  // Keep the active chip visible inside a horizontal slider without moving the page
+  function revealActive(container) {
+    const active = container.querySelector('.active');
+    if (!active || container.scrollWidth <= container.clientWidth) return;
+    const left = active.offsetLeft - container.offsetLeft;
+    const right = left + active.offsetWidth;
+    if (left < container.scrollLeft || right > container.scrollLeft + container.clientWidth) {
+      container.scrollTo({ left: Math.max(0, left - 16), behavior: 'smooth' });
+    }
+  }
+
+  function updateSliderState(container) {
+    const track = container.parentElement;
+    const max = container.scrollWidth - container.clientWidth;
+    const atStart = container.scrollLeft <= 2;
+    const atEnd = container.scrollLeft >= max - 2;
+    track.classList.toggle('has-prev', max > 2 && !atStart);
+    track.classList.toggle('has-next', max > 2 && !atEnd);
+    const controls = document.querySelector(`.slider-controls[data-for="${container.id}"]`);
+    if (controls) {
+      controls.classList.toggle('is-hidden', max <= 2);
+      controls.querySelector('[data-dir="-1"]').disabled = atStart;
+      controls.querySelector('[data-dir="1"]').disabled = atEnd;
+    }
+  }
+
+  function initSliders() {
+    [catNav, listEl].forEach((container) => {
+      container.addEventListener('scroll', () => {
+        updateSliderState(container);
+        if (container === listEl && container.scrollLeft > 8) {
+          workspace.classList.add('has-swiped');
+        }
+      }, { passive: true });
+    });
+
+    document.querySelectorAll('.slider-controls').forEach((controls) => {
+      const container = document.getElementById(controls.dataset.for);
+      controls.querySelectorAll('.slider-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const dir = Number(btn.dataset.dir);
+          container.scrollBy({ left: dir * container.clientWidth * 0.8, behavior: 'smooth' });
+        });
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      updateSliderState(catNav);
+      updateSliderState(listEl);
+    });
   }
 
   function renderCategories() {
@@ -135,6 +224,9 @@
         updateHash();
       });
     });
+
+    updateSliderState(catNav);
+    revealActive(catNav);
   }
 
   function renderList() {
@@ -156,19 +248,41 @@
         renderList();
         renderDetail(findProject(activeProjectId));
         updateHash();
-        if (window.innerWidth <= 900) {
+        if (isCompact()) {
           detailEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
+
+    if (countEl) {
+      const pos = projects.findIndex((p) => p.id === activeProjectId) + 1;
+      countEl.textContent = projects.length ? `· ${pos} of ${projects.length}` : '';
+    }
+    if (listEl.dataset.category !== activeCategory) {
+      listEl.dataset.category = activeCategory;
+      listEl.scrollLeft = 0;
+    }
+    updateSliderState(listEl);
+    revealActive(listEl);
   }
 
   function renderOverview() {
     const total = PORTFOLIO_PROJECTS.length;
     overviewEl.innerHTML = PORTFOLIO_CATEGORIES.map((cat) => {
       const count = projectsInCategory(cat.id).length;
-      return `<span class="overview-chip"><strong>${count}</strong> ${escapeHtml(cat.name)}</span>`;
+      return `<button type="button" class="overview-chip" data-category="${cat.id}"><strong>${count}</strong> ${escapeHtml(cat.name)}</button>`;
     }).join('');
+
+    overviewEl.querySelectorAll('.overview-chip').forEach((chip) => {
+      chip.addEventListener('click', () => {
+        activeCategory = chip.dataset.category;
+        const first = projectsInCategory(activeCategory)[0];
+        activeProjectId = first ? first.id : null;
+        renderAll();
+        updateHash();
+        workspace.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
     overviewEl.setAttribute('aria-label', `${total} projects across ${PORTFOLIO_CATEGORIES.length} categories`);
   }
 
@@ -202,6 +316,7 @@
   }
 
   initFromHash();
+  initSliders();
   renderOverview();
   renderAll();
 

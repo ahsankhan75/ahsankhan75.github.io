@@ -7,7 +7,11 @@
   <title>Muhammad Ahsan Khan Lodhi · Portfolio</title>
   <meta name="theme-color" content="#000000">
   <meta name="color-scheme" content="dark">
-  <link rel="stylesheet" href="assets/css/style.css?v=3">
+  <link rel="icon" href="images/favicon.ico" sizes="any">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
 </head>
 <body>
 
@@ -135,20 +139,43 @@
         <span class="section__label">Projects</span>
         <h2 class="section__title">Selected work</h2>
         <p class="section__subtitle">
-          Browse by category, pick a project, and explore what was built — plus the impact it had and what I took away from each part. Every project links to its repository or live demo.
+          Every project links to its repository or live demo, with the impact it had and what I took away from each part.
         </p>
+
+        <ol class="projects-guide" aria-label="How to browse projects">
+          <li><span class="projects-guide__num">1</span><span>Choose a category</span></li>
+          <li><span class="projects-guide__num">2</span><span>Pick a project</span></li>
+          <li><span class="projects-guide__num">3</span><span>Read the breakdown</span></li>
+        </ol>
 
         <div class="projects-overview" id="projects-overview" aria-label="Project category overview"></div>
 
         <div class="projects-workspace" id="projects-workspace">
           <aside class="projects-sidebar">
-            <p class="projects-sidebar__label">Categories</p>
-            <nav class="projects-categories" id="projects-categories" aria-label="Project categories"></nav>
+            <div class="slider-head">
+              <p class="projects-sidebar__label"><span class="step-num">1</span> Categories</p>
+              <div class="slider-controls" data-for="projects-categories">
+                <button type="button" class="slider-btn" data-dir="-1" aria-label="Previous categories">‹</button>
+                <button type="button" class="slider-btn" data-dir="1" aria-label="More categories">›</button>
+              </div>
+            </div>
+            <div class="slider-track">
+              <nav class="projects-categories" id="projects-categories" aria-label="Project categories"></nav>
+            </div>
           </aside>
           <div class="projects-main">
             <div class="projects-list-panel">
-              <p class="projects-list-panel__label">In this category</p>
-              <nav class="projects-list" id="projects-list" aria-label="Projects in category"></nav>
+              <div class="slider-head">
+                <p class="projects-list-panel__label"><span class="step-num">2</span> Projects <span class="slider-count" id="projects-count"></span></p>
+                <div class="slider-controls" data-for="projects-list">
+                  <button type="button" class="slider-btn" data-dir="-1" aria-label="Previous projects">‹</button>
+                  <button type="button" class="slider-btn" data-dir="1" aria-label="More projects">›</button>
+                </div>
+              </div>
+              <div class="slider-track">
+                <nav class="projects-list" id="projects-list" aria-label="Projects in category"></nav>
+              </div>
+              <p class="swipe-hint" aria-hidden="true">Swipe to see more →</p>
             </div>
             <article class="project-detail" id="project-detail" aria-live="polite"></article>
           </div>
@@ -243,8 +270,8 @@
     </div>
   </footer>
 
-  <script src="assets/js/projects-data.js?v=3"></script>
-  <script src="assets/js/projects-ui.js?v=3"></script>
-  <script src="assets/js/main.js?v=3"></script>
+  <script src="assets/js/projects-data.js?v=4"></script>
+  <script src="assets/js/projects-ui.js?v=4"></script>
+  <script src="assets/js/main.js?v=4"></script>
 </body>
 </html>
